@@ -32,6 +32,11 @@ DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 _OBJ = hellomake.o hellofunc.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
+all: $(ODIR) hellomake
+
+$(ODIR):
+	mkdir -p $(ODIR)
+
 $(ODIR)/%.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
@@ -42,5 +47,6 @@ hellomake: $(OBJ)
 
 clean:
 	# 'core' are coredumps
+	rm -rf $(ODIR)
 	rm -f $(ODIR)/*.o *~ core $(IDIR)/*~
 	rm hellomake

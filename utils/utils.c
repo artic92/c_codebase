@@ -6,14 +6,6 @@
 #include <string.h>
 #include <time.h>
 
-enum DEBUG_LEVEL_
-{
-    DEBUG_DISABLED,
-    DEBUG_INFO,
-    DEBUG_ERROR,
-    DEBUG_DEBUG
-} DEBUG_LEVEL;
-
 extern unsigned int current_debug_level;
 extern FILE* log_file_p;
 

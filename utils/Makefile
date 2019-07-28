@@ -9,6 +9,11 @@ DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 _OBJ = utils.o test.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
+all: $(ODIR) test
+
+$(ODIR):
+	mkdir -p $(ODIR)
+
 $(ODIR)/%.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
@@ -18,5 +23,6 @@ test: $(OBJ)
 .PHONY: clean
 
 clean:
+	rm -rf $(ODIR)
 	rm -f $(ODIR)/*.o *~ core $(IDIR)/*~
 	rm test

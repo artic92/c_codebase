@@ -1,0 +1,2 @@
+Ci vogliono DUE variabili di sincronizzazione!!! se entrano trpp consumatori si rischia di far andare a valori negativi la variabile num_scorte.
+Il passaggio dello stato da IN_USO a LIBERO o OCCUPATO va messo tra enter_monitor e leave_monitor.

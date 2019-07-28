@@ -27,6 +27,11 @@ ODIR=obj
 _OBJ = read_from_input_device.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
+all: $(ODIR) read_from_input_device
+
+$(ODIR):
+	mkdir -p $(ODIR)
+
 $(ODIR)/%.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
@@ -36,5 +41,6 @@ read_from_input_device: $(OBJ)
 .PHONY: clean
 
 clean:
+	rm -rf $(ODIR)
 	rm -f $(ODIR)/*.o *~ core $(IDIR)/*~
 	rm read_from_input_device
