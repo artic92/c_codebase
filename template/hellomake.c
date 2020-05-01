@@ -1,21 +1,22 @@
-/**************************************************************************
-*                  Copyright (C) Antonio Riccio, 2019				              *
-* ------------------------------------------------------------------------*
-*                                                                         *
-* This program is free software. You may use, modify, and redistribute it *
-* under the terms of the GNU General Public License as published by the   *
-* Free Software Foundation, either version 3 or (at your option) any      *
-* later version. This program is distributed without any warranty.        *
-* ----------------------------------------------------------------------- *
-* 																		                                    *
-* Examples:																                                *
-*	- Asynchronous I/O through the select() system call.				            *
-*	- User-space Linux input subsystem						  			                  *
-* 																		                                    *
-* More info at:															                              *
-*	- Asynchronous I/O: 'The Linux Programming Interface' chapter 63        *
-*	- Linux input subsystem: Documentation/input/input_uapi.rst			        *
-***************************************************************************/
+/**
+ * @file hellomake.c
+ * @author Antonio Riccio <antonio.riccio.27@gmail.com>
+ * @brief Driver file for the template project
+ * @version 0.1
+ * @date 2020-05-01
+ *
+ * @copyright (c) 2020
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 3 of the License, or any later version. This
+ * program is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+ * A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 51
+ * Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ *
+ */
 #include <getopt.h>
 #include <stdbool.h>
 #include <stdio.h>
@@ -25,12 +26,14 @@
 
 #include "hellomake.h"
 
-/* program configuration variables */
 static unsigned int currentDebugLevel = debugDisabled;
 static bool print_hello = false;
 static char executable_name[] = "pippozzo";
 
-/* getopt_long options */
+/**
+ * @brief *long options for getopt_long()*
+ *
+ */
 static struct option longOptions[] = {
     { "help",       no_argument,            0,  'h' },
     { "vv",         no_argument,            0,   0  },
@@ -38,7 +41,8 @@ static struct option longOptions[] = {
 };
 
 /**
- * usage() - Prints usage information.
+ * @brief *prints usage information*
+ *
  */
 static void usage()
 {
@@ -47,6 +51,35 @@ static void usage()
   printf("\n");
 }
 
+/**
+ * @brief *main function*
+ *
+ * @details *argv* and *argc* are how command line arguments are passed to
+ * *main()* in C and C++. The variables are named **argc** (*argument count*)
+ * and **argv** (*argument vector*) by convention, but they can be given any
+ * valid identifier, e.g.:
+ *
+ * ```c
+ * int main(int num_args, char** arg_strings)
+ * ```
+ *
+ * is equally valid. They can also be omitted entirely, yielding:
+ *
+ * ```c
+ * int main()
+ * ```
+ *
+ * if you do not intend to process command line arguments.
+ *
+ * @param argc [in] number of strings pointed to by argv
+ * @details *argc* stands for *argument count*. This will (in practice) be 1
+ * plus the number of arguments, as virtually all implementations will prepend
+ * the name of the program to the array.
+ * @param argv [in] array of strings contaning parameters plus executable name
+ * @details *argv* stands for *argument count*. *argument vector*
+ * @return int the function returns EXIT_SUCCESS on success, otherwise
+ * EXIT_FAILURE
+ */
 int main(int argc, char* const argv[])
 {
     int opt = 0;
