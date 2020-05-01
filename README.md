@@ -1,2 +1,3 @@
-# codebase
-A collection of C/C++/Java programs writtern during the university
+# C Codebase
+
+This repo contains a collection of C programs writtern during the university.
