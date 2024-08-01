@@ -34,7 +34,7 @@ enum debugLevel{
     debugLvlInfo,
     debugLvlError,
     debugLvlDebug,
-} debugLevel;
+};
 
 /**
  * @brief *prints a message to the standard output*
